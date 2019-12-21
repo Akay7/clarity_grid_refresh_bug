@@ -1,0 +1,24 @@
+<clr-main-container>
+  <div class="content-container">
+    <main class="content-area">
+      <clr-datagrid>
+
+        <clr-dg-column>User Full Name</clr-dg-column>
+        <clr-dg-column>Provider</clr-dg-column>
+
+        <clr-dg-row *ngFor="let socialAccount of socialAccounts" [clrDgItem]="socialAccount">
+          <clr-dg-action-overflow>
+            <button class="action-item" (click)="unlink(socialAccount)">Unlink</button>
+          </clr-dg-action-overflow>
+          <clr-dg-cell>{{socialAccount.name}}</clr-dg-cell>
+          <clr-dg-cell>{{socialAccount.provider}}</clr-dg-cell>
+        </clr-dg-row>
+
+        <clr-dg-footer>{{socialAccounts.length}} accounts</clr-dg-footer>
+      </clr-datagrid>
+
+    </main>
+  </div>
+
+</clr-main-container>
+
