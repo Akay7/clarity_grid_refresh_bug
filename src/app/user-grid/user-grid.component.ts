@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { ClrDatagrid } from "@clr/angular";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: 'app-user-grid',
   templateUrl: './user-grid.component.html',
   styleUrls: ['./user-grid.component.scss']
 })
-export class UserGridComponent implements OnInit {
+export class UserGridComponent implements OnInit, AfterViewInit {
   socialAccounts = [];
+  @ViewChild(ClrDatagrid) datagrid;
 
   constructor() { }
 
@@ -20,6 +23,13 @@ export class UserGridComponent implements OnInit {
       name: 'Inokentiy',
       provider: 'Google'
     }];
+  }
+
+  ngAfterViewInit() {
+    // WORKAROUND
+    // this.datagrid.rows.changes.pipe(tap(_ => {
+    //   this.datagrid.resize();
+    // })).subscribe();
   }
 
   unlink(socialAccount) {
