@@ -3,10 +3,10 @@
     <main class="content-area">
       <clr-datagrid>
 
-        <clr-dg-column>User Full Name</clr-dg-column>
-        <clr-dg-column>Provider</clr-dg-column>
+        <clr-dg-column [clrDgField]="'name'">User Full Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'provider'">Provider</clr-dg-column>
 
-        <clr-dg-row *ngFor="let socialAccount of socialAccounts" [clrDgItem]="socialAccount">
+        <clr-dg-row *clrDgItems="let socialAccount of socialAccounts">
           <clr-dg-action-overflow>
             <button class="action-item" (click)="unlink(socialAccount)">Unlink</button>
           </clr-dg-action-overflow>
